@@ -5,9 +5,9 @@ import Greeting from './components/Greeting';
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element ={<Greeting />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Greeting />} />
+      </Routes>
     </BrowserRouter>
   );
 }
