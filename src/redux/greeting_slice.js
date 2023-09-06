@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-catch */
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -20,18 +22,21 @@ const greetingSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchGreeting.pending, (state) => {
-        state.error = null;
-        state.isLoading = true;
-      })
-      .addCase(fetchGreeting.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.greeting = action.payload.greeting;
-      })
-      .addCase(fetchGreeting.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.error.message;
-      });
+      .addCase(fetchGreeting.pending, (state) => ({
+        ...state,
+        error: null,
+        isLoading: true,
+      }))
+      .addCase(fetchGreeting.fulfilled, (state, action) => ({
+        ...state,
+        isLoading: false,
+        greeting: action.payload.greeting,
+      }))
+      .addCase(fetchGreeting.rejected, (state, action) => ({
+        ...state,
+        isLoading: false,
+        error: action.error.message,
+      }));
   },
 });
 
