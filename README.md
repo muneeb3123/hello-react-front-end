@@ -2,8 +2,6 @@
 
 # Hello React Frontend
 
-
-
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
